@@ -1,14 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw0031hd87ury"]
+[gd_scene load_steps=8 format=3 uid="uid://bw0031hd87ury"]
 
 [ext_resource type="Script" path="res://Scripts/Player/character_controller.gd" id="1_047c5"]
+[ext_resource type="Script" path="res://Scripts/Player/character_camera.gd" id="2_hvw7d"]
 [ext_resource type="PackedScene" uid="uid://crrpnc5fvmr4q" path="res://Scenes/Player/player_input.tscn" id="2_jqull"]
+[ext_resource type="Texture2D" uid="uid://fci0dk24qt6" path="res://Sprites/Frijol HD2.png" id="3_j4qjm"]
+[ext_resource type="PackedScene" uid="uid://baq6eorwixldt" path="res://Scenes/Components/velocity_component.tscn" id="4_ouyvk"]
+[ext_resource type="PackedScene" uid="uid://cpin2vrjtnag8" path="res://Scenes/Components/wallet_component.tscn" id="6_f7w1h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nowe1"]
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_047c5")
 
+[node name="CharacterCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 4)
+script = ExtResource("2_hvw7d")
+offset = 0.5
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_nowe1")
 
 [node name="Player Input" parent="." instance=ExtResource("2_jqull")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.173205, 0.1, 0, -0.1, 0.173205, 0, 0, 0)
+texture = ExtResource("3_j4qjm")
+
+[node name="Velocity Component" parent="." instance=ExtResource("4_ouyvk")]
+speed = 5.0
+
+[node name="Wallet" parent="." instance=ExtResource("6_f7w1h")]
+initial_money = 100
+
+[connection signal="direction_changed" from="Player Input" to="CharacterCamera" method="_on_player_input_direction_changed"]
+[connection signal="velocity_modifier" from="Velocity Component" to="." method="_on_velocity_component_velocity_modifier"]

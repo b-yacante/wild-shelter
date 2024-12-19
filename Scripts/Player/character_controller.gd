@@ -19,7 +19,7 @@ func _physics_process(delta):
 	#handle direction
 	var direction = (transform.basis * Vector3(player_input.direction.x, 0, player_input.direction.y)).normalized()
 	if direction:
-		transform.basis = Basis.looking_at(direction)
+		#transform.basis = Basis.looking_at(direction)
 		velocity.x = direction.x * _speed
 		velocity.z = direction.z * _speed
 	else:
@@ -28,4 +28,5 @@ func _physics_process(delta):
 	# Moving the Character
 	move_and_slide()
 
-	move_and_slide()
+func _on_velocity_component_velocity_modifier(speed):
+	_speed = speed
