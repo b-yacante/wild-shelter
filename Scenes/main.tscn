@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwx8ugowffq41"]
+[gd_scene load_steps=6 format=3 uid="uid://bwx8ugowffq41"]
 
 [ext_resource type="PackedScene" uid="uid://bw0031hd87ury" path="res://Scenes/Player/character.tscn" id="1_ut6cr"]
 [ext_resource type="Script" path="res://Scripts/Interface/hub_controller.gd" id="2_dwi3u"]
+[ext_resource type="ArrayMesh" uid="uid://brcijrja8lvtj" path="res://models/terrain.obj" id="3_boipu"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_a28ko"]
 map_width = 100
@@ -14,6 +15,7 @@ size = Vector2(100, 30)
 [node name="Main" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("HeightMapShape3D_a28ko")
@@ -47,3 +49,10 @@ grow_horizontal = 0
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.89653, 0, -4.06238)
+mesh = ExtResource("3_boipu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2154, 15.024, 0)
