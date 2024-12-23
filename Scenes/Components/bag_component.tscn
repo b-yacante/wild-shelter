@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd43j5wdwdf20"]
+
+[ext_resource type="Script" path="res://Scripts/Components/bag_component.gd" id="1_3g1ia"]
+
+[node name="Bag component" type="Node"]
+script = ExtResource("1_3g1ia")

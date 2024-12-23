@@ -13,6 +13,17 @@ config_version=5
 config/name="wild-shelter"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Interface="*res://Scripts/interface.gd"
+SaveData="*res://Scripts/save_data.gd"
+TimeSystem="*res://Scripts/time_system.gd"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

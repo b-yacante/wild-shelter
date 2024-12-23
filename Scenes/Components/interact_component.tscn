@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpoaj5riswslm"]
+
+[ext_resource type="Script" path="res://Scripts/Components/interact_component.gd" id="1_r0bwb"]
+[ext_resource type="Texture2D" uid="uid://cgnabxivjbm8b" path="res://Sprites/E.png" id="2_q7nmq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yf5xm"]
+radius = 0.85143
+
+[node name="Interact Component" type="Area3D"]
+script = ExtResource("1_r0bwb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yf5xm")
+
+[node name="Control interact" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 125.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control interact"]
+layout_mode = 2
+offset_right = 67.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control interact/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_q7nmq")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control interact/VBoxContainer"]
+layout_mode = 2
+text = "Recoger"
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
