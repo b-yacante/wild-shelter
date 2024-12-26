@@ -20,7 +20,7 @@ class IBag:
 		pass
 	func subtract_weight():
 		pass
-
+	signal weight_changed(new_weight: float)
 ## 		var example_property
 ##
 ## 		signal example_signal
